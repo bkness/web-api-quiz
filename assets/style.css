@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+header nav{
+    display: flex;
+    justify-content: flex-start;
+} 
+
+header nav {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+header p {
+    font-size: 20px;
+}
+
+.container {
+    display: flex;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    height: 30px;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    margin-top: 40px;
+    font-size: 25px;
+
+    } 
+ 
+   
