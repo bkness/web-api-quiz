@@ -5,9 +5,10 @@ var timer;
 var timerCount = document.getElementById("time");
 var introContainer = document.getElementById('intro');
 var questionContainer = document.getElementById('questions');
-var answerButtonsContainer = document.getElementById('answer-buttons'); 
+var answerButtonsContainer = document.getElementById('answer-buttons');
 var penaltyTime = 10;
 var currentQuestionIndex = 0;
+var gameOver = false;
 
 var questions = [
     {
@@ -58,7 +59,7 @@ function startGame() {
 
         if (time <= 0) {
             clearInterval(timer);
-            handleEndOfQuiz();
+            endQuiz();
         }
     }, 1000);
 
@@ -69,6 +70,8 @@ function startGame() {
 function showQuestion() {
     var h2 = document.createElement("h2");
     h2.textContent = questions[currentQuestionIndex].question;
+    questionContainer.innerHTML = '';
+    answerButtonsContainer.innerHTML = ''
     questionContainer.appendChild(h2);
 
     var answerContainer = document.createElement('div');
@@ -94,20 +97,30 @@ function setNextQuestion() {
 }
 
 function selectAnswer(event) {
+    if (gameOver) return;
+
     var correctAnswer = event.target.dataset.correct;
 
     if (correctAnswer === "true") {
-        
+        setNextQuestion();
     } else {
         time -= penaltyTime;
         if (time < 0) time = 0;
     }
-
-    setNextQuestion();
 }
 
 function endQuiz() {
-    var endMessage = document.createElement("h2");
-    endMessage.textContent = "Time's up! Game Over!";
-    questionContainer.appendChild(endMessage);
+    if (!gameOver) {
+        clearInterval(timer);
+        gameOver = true;
+        if (time > 0) {
+            var endMessage = document.createElement("h2");
+            endMessage.textContent = "Congratulations, you won!";
+            questionContainer.appendChild(endMessage);
+        } else {
+            var endMessage = document.createElement("h2");
+            endMessage.textContent = "Time's up! Game Over!";
+            questionContainer.appendChild(endMessage);
+        }
+    }
 }

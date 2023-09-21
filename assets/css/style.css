@@ -9,7 +9,7 @@ header nav{
 } 
 
 header nav {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Lora', serif;
     font-size: 30px;
     font-weight: 600;
 }
@@ -20,7 +20,7 @@ header p {
 
 .container {
     display: flex;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Zen Maru Gothic', sans-serif;
     height: 30px;
     display: flex;
     text-align: center;
