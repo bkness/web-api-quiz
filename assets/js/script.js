@@ -122,5 +122,6 @@ function endQuiz() {
             endMessage.textContent = "Time's up! Game Over!";
             questionContainer.appendChild(endMessage);
         }
+         
     }
 }

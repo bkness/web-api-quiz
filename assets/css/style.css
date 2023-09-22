@@ -29,5 +29,49 @@ header p {
     font-size: 25px;
 
     } 
- 
-   
+    
+    #start-game {
+        margin: 15% 10px; /* Adjust as needed for spacing */
+        width: 45%;
+        color: #FFFFFF;
+        background-color: #007BFF;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: bold;
+        padding: 10px 20px;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+    #start-game:hover {
+        background-color: #0056b3;
+    }
+
+    #answer-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center; /* Adjust as needed */
+        margin-top: 15%;
+    }
+    
+    #answer-buttons button {
+        /* Add any additional styles for buttons here */
+        margin: 10px; /* Adjust as needed for spacing between buttons */
+        width: 45%;
+        color: #FFFFFF; 
+        background-color: #007BFF;
+        border: none;
+        border-radius: 8px; 
+        font-size: 16px; /* Adjust font size */
+        font-weight: bold; 
+        padding: 10px 20px;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    #answer-buttons button:hover {
+        background-color: #0056b3; 
+    }
+
+    .hide {
+        display: none;
+    }
