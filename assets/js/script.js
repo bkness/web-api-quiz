@@ -1,4 +1,5 @@
 // here we have created variables that we can call on later down in our code, especially the important ones such as time and penalty time. we have to keep these in our global scope in order to reduce code and make it more accessible
+
 var startBtn = document.getElementById("start-game");
 var time = 100;
 var timer;
@@ -11,6 +12,7 @@ var currentQuestionIndex = 0;
 var gameOver = false;
 
 // here i am creatng an array with questions and answers that i can call back on
+
 var questions = [
     {
         question: "What is HTML short for?",
@@ -51,13 +53,19 @@ var questions = [
 ];
 
 // added an event listener so when you click start game the javascript application starts
+
 startBtn.addEventListener('click', startGame);
 
 // here is my start game function. Ive given it a name that i can refer back to and be able to comprehend. 
+
 function startGame() {
+  
     //    this displays the time with the .textContent feature
+  
     timerCount.textContent = time;
+  
     //    sets up a timer to count down the time
+  
     timer = setInterval(function () {
         time--;
         timerCount.textContent = time;
@@ -65,17 +73,22 @@ function startGame() {
         if (time <= 0) {
             clearInterval(timer);
             //    ends the quiz if time runs out
+            
             endQuiz();
         }
     }, 1000);
     // hides the into container after start-game has initialized 
-    // introContainer.style.display = 'none';
+   
+    introContainer.style.display = 'none';
+   
     // shows our first question
+   
     showQuestion();
 }
 
 function showQuestion() {
     // here we are creating and appending new elements to display the question text
+   
     var h2 = document.createElement("h2");
     h2.textContent = questions[currentQuestionIndex].question;
     questionContainer.innerHTML = '';
@@ -85,6 +98,7 @@ function showQuestion() {
     var answerContainer = document.createElement('div');
 
     // here ive created a loop to cycle through the answers for the current question
+    
     for (var i = 0; i < questions[currentQuestionIndex].answers.length; i++) {
             var button = document.createElement("button");
             button.textContent = questions[currentQuestionIndex].answers[i].text;
@@ -100,9 +114,11 @@ function setNextQuestion() {
     currentQuestionIndex++;
     if (currentQuestionIndex < questions.length) {
         //    shows the next question if the first was answered properly 
+  
         showQuestion();
     } else {
         // ends quiz if there are no more questions
+  
         endQuiz();
     }
 }
@@ -112,10 +128,13 @@ function selectAnswer(event) {
 
     var correctAnswer = event.target.dataset.correct;
     // here i state that is the correct answerf chosen does not equal true the we skip to the penalty time
+  
     if (correctAnswer === "true") {
         //    moves to the next question if the answer if correct
+      
         setNextQuestion();
         // here i have created a penalty timer for the user for 10 seconads if the answer doesnt return true
+    
     } else {
         time -= penaltyTime;
         if (time < 0) time = 0;
@@ -124,7 +143,9 @@ function selectAnswer(event) {
 
 function endQuiz() {
     if (!gameOver) {
+       
         // here i am clearing the timer and giving the user a response varrying on if they won or not
+       
         clearInterval(timer);
         gameOver = true;
         if (time > 0) {
