@@ -124,7 +124,7 @@ function selectAnswer(event) {
 
 function endQuiz() {
     if (!gameOver) {
-        // here i am clearing the timer and giving the user a response varrying on whethere or not they won
+        // here i am clearing the timer and giving the user a response varrying on if they won or not
         clearInterval(timer);
         gameOver = true;
         if (time > 0) {
