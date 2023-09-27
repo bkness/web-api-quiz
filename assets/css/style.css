@@ -3,12 +3,9 @@
     padding: 0;
 }
 
-header nav{
+#highscore-button {
     display: flex;
     justify-content: flex-start;
-} 
-
-header nav {
     font-family: 'Lora', serif;
     font-size: 30px;
     font-weight: 600;

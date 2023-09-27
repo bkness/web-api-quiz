@@ -9,7 +9,19 @@ var questionContainer = document.getElementById('questions');
 var answerButtonsContainer = document.getElementById('answer-buttons');
 var penaltyTime = 10;
 var currentQuestionIndex = 0;
+var highscoreButton = document.getElementById('highscore-button');
 var gameOver = false;
+
+// Here i cam creating a function to call on my highschore button and display the users highscore 
+highscoreButton.addEventListener('click', function() {
+    var win = localStorage.getItem('win');
+    if (win === 'true') {
+        alert('Congratulations! You won the game!');
+    } else {
+        alert('You did not win the game.');
+    }
+ });
+
 
 // here i am creatng an array with questions and answers that i can call back on
 
@@ -152,6 +164,8 @@ function endQuiz() {
             var endMessage = document.createElement("h2");
             endMessage.textContent = "Congratulations, you won!";
             questionContainer.appendChild(endMessage);
+        
+            localStorage.setItem('win', 'true');
         } else {
             var endMessage = document.createElement("h2");
             endMessage.textContent = "Time's up! Game Over!";
