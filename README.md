@@ -1,4 +1,4 @@
-Here is my attempt at a timed web quiz implementing jquery and dom styles with javascript. 
+Here is a timed quiz I created. With Javascript, CSS and HTML structure I was able to create a simple quiz that has functionality and meets criteria in acceptance with a viable functioning project. It starts a timer when startg quiz is presse, a timer starts - subtracting from zero. If the user presses a wrong answer 10 seconds is subtracted from the clock. Lasly, if the timer reaches 0 or the user guesses correctly with the time alloted then we will move onto the endQuiz function which gives the user an option to store their initials for a highscore which is then saved to our local storage. I have added adept comments explaining the functionality of my process through the code.
 
 Here is a screen shot and here it is deployed.
 

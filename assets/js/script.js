@@ -13,6 +13,7 @@ var highscoreButton = document.getElementById('highscore-button');
 var gameOver = false;
 
 // Here i cam creating a function to call on my highschore button and display the users highscore 
+// I adding an event listener so I know when the function needs to be performed
 highscoreButton.addEventListener('click', function() {
     var win = localStorage.getItem('win');
     if (win === 'true') {
@@ -84,6 +85,7 @@ function startGame() {
 
         if (time <= 0) {
             clearInterval(timer);
+          
             //    ends the quiz if time runs out
             
             endQuiz();
@@ -157,7 +159,8 @@ function endQuiz() {
     if (!gameOver) {
        
         // here i am clearing the timer and giving the user a response varrying on if they won or not
-       
+    //    need to add ways to check score if won change time > o 
+    // add spot for user to add their credentials 
         clearInterval(timer);
         gameOver = true;
         if (time > 0) {
