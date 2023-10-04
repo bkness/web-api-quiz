@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lan="eng">
+<html lang="eng">
 
 <head>
     <meta charset="UTF-8" />
@@ -11,21 +11,28 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora&family=Zen+Maru+Gothic:wght@500&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Lora&family=Zen+Maru+Gothic:wght@500&display=swap"
+    rel="stylesheet">
 
 <body>
     <header>
         <nav>
-            <a style="text-decoration: none;"></a>
             <button id="highscore-button">Highscores</button>
         </nav>
         <p>Time: <span id="time">0</span></p>
+        <form id="initialsForm" style="display: none;">
+            <input type="text" id="initials" maxlength="3" placeholder="Enter Your Initials" />
+            <button type="button" onclick="saveHighScore()">Submit</button>
+        </form>
+        <div id="highscore-container" style="display: none;">
+            <h2>High Scores</h2>
+            <ul id="highscore-list"></ul>
+        </div>
     </header>
-
+    
 
     <main class="container">
-        <section id ="time">
+        <section id="time">
         </section>
         <section id="intro">
             <h1>Timed Quiz</h1>
@@ -36,13 +43,12 @@
         <section id="questions">
         </section>
         <section id="answer-buttons">
-         </section>
+        </section>
+        <section id="end-message">
+        </secttion>
+
     </main>
-
-
-
     <script src="./assets/js/script.js"></script>
-
 </body>
 
 </html>

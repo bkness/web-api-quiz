@@ -4,15 +4,55 @@
 }
 
 #highscore-button {
-    display: flex;
-    justify-content: flex-start;
-    font-family: 'Lora', serif;
+    background-color: #fff; 
+    color: #007bff; 
+    padding: 8px 16px; 
+    text-decoration: none; 
+    border: none; 
+    cursor: pointer;
+    width: 20%;
+    text-align: start;
     font-size: 30px;
-    font-weight: 600;
 }
 
 header p {
     font-size: 20px;
+    margin-left: 16px;
+    font-family: 'Zen Maru Gothic', sans-serif;
+    color: green;
+}
+
+#initialsForm input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 200px; 
+    margin-left: 6px;
+  }
+
+#initialsForm button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50; 
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #initialsForm button:hover {
+    background-color: #45a049; 
+  }
+
+#highscore-container {
+    font-family: 'Zen Maru Gothic', sans-serif;
+    margin-left: 25px;
+    font-size: 20px;
+}
+
+#highscore-list {
+    List-style-type: decimal;
 }
 
 .container {
@@ -28,7 +68,7 @@ header p {
     } 
     
     #start-game {
-        margin: 15% 10px; /* Adjust as needed for spacing */
+        margin: 15% 10px; 
         width: 45%;
         color: #FFFFFF;
         background-color: #007BFF;
@@ -47,19 +87,19 @@ header p {
     #answer-buttons {
         display: flex;
         flex-wrap: wrap;
-        justify-content: center; /* Adjust as needed */
+        justify-content: center; 
         margin-top: 15%;
     }
-    
+
     #answer-buttons button {
-        /* Add any additional styles for buttons here */
-        margin: 10px; /* Adjust as needed for spacing between buttons */
+
+        margin: 10px; 
         width: 45%;
         color: #FFFFFF; 
         background-color: #007BFF;
         border: none;
         border-radius: 8px; 
-        font-size: 16px; /* Adjust font size */
+        font-size: 16px; 
         font-weight: bold; 
         padding: 10px 20px;
         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
@@ -69,6 +109,4 @@ header p {
         background-color: #0056b3; 
     }
 
-    .hide {
-        display: none;
-    }
+   

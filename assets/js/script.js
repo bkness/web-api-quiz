@@ -7,22 +7,50 @@ var timerCount = document.getElementById("time");
 var introContainer = document.getElementById('intro');
 var questionContainer = document.getElementById('questions');
 var answerButtonsContainer = document.getElementById('answer-buttons');
+var endMessage = document.getElementById('end-message')
 var penaltyTime = 10;
 var currentQuestionIndex = 0;
 var highscoreButton = document.getElementById('highscore-button');
+var initialsSubmit = document.getElementById('initialsForm');
 var gameOver = false;
+var highscoreButton = document.getElementById('highscore-button');
 
-// Here i cam creating a function to call on my highschore button and display the users highscore 
-// I adding an event listener so I know when the function needs to be performed
-highscoreButton.addEventListener('click', function() {
-    var win = localStorage.getItem('win');
-    if (win === 'true') {
-        alert('Congratulations! You won the game!');
-    } else {
-        alert('You did not win the game.');
-    }
- });
+highscoreButton.addEventListener('click', displayHighScores);
 
+function saveHighScore() {
+    var initials = document.getElementById('initials').value; 
+    var score = time;
+    // getting existing high score from local storage 
+    var highScores = JSON.parse(localStorage.getItem('highScores')) || [];
+    // adds a new high score 
+    highScores.push({ initials: initials, score: score });
+    // sort high scores in decending order 
+    highScores.sort(function(a, b) {
+        return b.score - a.score;
+    });
+    // keeps only 5 scores 
+    highScores = highScores.slice(0, 5);
+    // saves updated highscore back to local storage 
+    localStorage.setItem('highScores', JSON.stringify(highScores));
+    // displays the high score 
+    displayHighScores();
+}
+
+function displayHighScores() {
+    var highscoreContainer = document.getElementById('highscore-container');
+    var highscoreList = document.getElementById('highscore-list');
+    var highscores = JSON.parse(localStorage.getItem('highScores')) || [];
+
+    highscoreList.innerHTML = ''
+
+    highscores.forEach(function(score) {
+        var li = document.createElement('li');
+        li.textContent = score.initials + ': ' + score.score;
+        highscoreList.appendChild(li);
+    }) 
+        highscoreContainer.style.display = 'block'
+    
+}
 
 // here i am creatng an array with questions and answers that i can call back on
 
@@ -72,37 +100,38 @@ startBtn.addEventListener('click', startGame);
 // here is my start game function. Ive given it a name that i can refer back to and be able to comprehend. 
 
 function startGame() {
-  
+
+    startBtn.style.display = 'none'
+    introContainer.style.display = 'none';
+
     //    this displays the time with the .textContent feature
-  
+
     timerCount.textContent = time;
-  
+
     //    sets up a timer to count down the time
-  
+
     timer = setInterval(function () {
         time--;
         timerCount.textContent = time;
 
         if (time <= 0) {
             clearInterval(timer);
-          
+
             //    ends the quiz if time runs out
-            
+
             endQuiz();
         }
     }, 1000);
     // hides the into container after start-game has initialized 
-   
-    introContainer.style.display = 'none';
-   
+
     // shows our first question
-   
+
     showQuestion();
 }
 
 function showQuestion() {
     // here we are creating and appending new elements to display the question text
-   
+
     var h2 = document.createElement("h2");
     h2.textContent = questions[currentQuestionIndex].question;
     questionContainer.innerHTML = '';
@@ -112,14 +141,14 @@ function showQuestion() {
     var answerContainer = document.createElement('div');
 
     // here ive created a loop to cycle through the answers for the current question
-    
+
     for (var i = 0; i < questions[currentQuestionIndex].answers.length; i++) {
-            var button = document.createElement("button");
-            button.textContent = questions[currentQuestionIndex].answers[i].text;
-            button.dataset.correct = questions[currentQuestionIndex].answers[i].correct;
-            button.addEventListener('click', selectAnswer);
-            answerContainer.appendChild(button);
-        }
+        var button = document.createElement("button");
+        button.textContent = questions[currentQuestionIndex].answers[i].text;
+        button.dataset.correct = questions[currentQuestionIndex].answers[i].correct;
+        button.addEventListener('click', selectAnswer);
+        answerContainer.appendChild(button);
+    }
 
     answerButtonsContainer.appendChild(answerContainer);
 }
@@ -128,11 +157,11 @@ function setNextQuestion() {
     currentQuestionIndex++;
     if (currentQuestionIndex < questions.length) {
         //    shows the next question if the first was answered properly 
-  
+
         showQuestion();
     } else {
         // ends quiz if there are no more questions
-  
+
         endQuiz();
     }
 }
@@ -142,13 +171,13 @@ function selectAnswer(event) {
 
     var correctAnswer = event.target.dataset.correct;
     // here i state that is the correct answerf chosen does not equal true the we skip to the penalty time
-  
+
     if (correctAnswer === "true") {
         //    moves to the next question if the answer if correct
-      
+
         setNextQuestion();
         // here i have created a penalty timer for the user for 10 seconads if the answer doesnt return true
-    
+
     } else {
         time -= penaltyTime;
         if (time < 0) time = 0;
@@ -157,23 +186,21 @@ function selectAnswer(event) {
 
 function endQuiz() {
     if (!gameOver) {
-       
+
         // here i am clearing the timer and giving the user a response varrying on if they won or not
-    //    need to add ways to check score if won change time > o 
-    // add spot for user to add their credentials 
+        //    need to add ways to check score if won change time > o 
+        // add spot for user to add their credentials 
         clearInterval(timer);
         gameOver = true;
+
         if (time > 0) {
-            var endMessage = document.createElement("h2");
-            endMessage.textContent = "Congratulations, you won!";
-            questionContainer.appendChild(endMessage);
-        
+            endMessage.textContent = "Crongatulations, you won!";
             localStorage.setItem('win', 'true');
+            initialsSubmit.style.display = 'block';
         } else {
-            var endMessage = document.createElement("h2");
-            endMessage.textContent = "Time's up! Game Over!";
-            questionContainer.appendChild(endMessage);
+            endMessage.textContent = "Times Up! Game Over!";
         }
 
+        questionContainer.appendChild(endMessage);
     }
 }
