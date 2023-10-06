@@ -18,14 +18,14 @@ var highscoreButton = document.getElementById('highscore-button');
 highscoreButton.addEventListener('click', displayHighScores);
 
 function saveHighScore() {
-    var initials = document.getElementById('initials').value; 
+    var initials = document.getElementById('initials').value;
     var score = time;
     // getting existing high score from local storage 
     var highScores = JSON.parse(localStorage.getItem('highScores')) || [];
     // adds a new high score 
     highScores.push({ initials: initials, score: score });
     // sort high scores in decending order 
-    highScores.sort(function(a, b) {
+    highScores.sort(function (a, b) {
         return b.score - a.score;
     });
     // keeps only 5 scores 
@@ -43,13 +43,13 @@ function displayHighScores() {
 
     highscoreList.innerHTML = ''
 
-    highscores.forEach(function(score) {
+    highscores.forEach(function (score) {
         var li = document.createElement('li');
         li.textContent = score.initials + ': ' + score.score;
         highscoreList.appendChild(li);
-    }) 
-        highscoreContainer.style.display = 'block'
-    
+    })
+    highscoreContainer.style.display = 'block'
+
 }
 
 // here i am creatng an array with questions and answers that i can call back on
