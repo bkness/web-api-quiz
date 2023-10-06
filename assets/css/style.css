@@ -112,3 +112,16 @@ header p {
 #answer-buttons button:hover {
     background-color: #0056b3;
 }
+
+.answer-button {
+    flex: 0 0 50%; /* Each button takes up 50% of the container width */
+    box-sizing: border-box; /* Ensures padding and border don't affect the width */
+    padding: 10px; /* Adjust as needed */
+  }
+  
+  /* Media query for smaller screens */
+  @media (max-width: 768px) {
+    .answer-button {
+      flex: 0 0 100%; /* On smaller screens, buttons take up 100% of the container width */
+    }
+}

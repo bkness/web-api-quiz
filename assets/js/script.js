@@ -36,6 +36,40 @@ function saveHighScore() {
     displayHighScores();
 }
 
+function resetQuiz() {
+    // Reset variables
+    time = 100;
+    currentQuestionIndex = 0;
+    gameOver = false;
+
+    // Reset timer display
+    timerCount.textContent = time;
+
+    // Hide end message and initials form
+    endMessage.textContent = "";
+    initialsSubmit.style.display = "none";
+
+    // Show start button and hide highscore container (if it's visible)
+    startBtn.style.display = "block";
+    highscoreContainer.style.display = "none";
+
+    // Clear any previous high score display
+    highscoreList.innerHTML = '';
+
+    // Show intro container and hide question container
+    introContainer.style.display = "block";
+    questionContainer.style.display = "none";
+
+    // Clear any previous question and answer buttons
+    questionContainer.innerHTML = '';
+    answerButtonsContainer.innerHTML = '';
+
+    initialsSubmit.addEventListener('submit', function(event) {
+        saveHighScore();
+        resetQuiz();
+    })
+}
+
 function displayHighScores() {
     var highscoreContainer = document.getElementById('highscore-container');
     var highscoreList = document.getElementById('highscore-list');
