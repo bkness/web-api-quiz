@@ -14,8 +14,22 @@ var highscoreButton = document.getElementById('highscore-button');
 var initialsEnter = document.getElementById('initialsForm');
 var gameOver = false;
 var highscoreButton = document.getElementById('highscore-button');
+var highscoreContainer = document.getElementById('highscore-container');
+var highscoreList = document.getElementById('highscore-list');
+var isHighScoreVisible = false
 
-highscoreButton.addEventListener('click', displayHighScores);
+highscoreButton.addEventListener('click', toggleHighScores);
+
+function toggleHighScores() {
+    if (isHighScoreVisible) {
+        highscoreContainer.style.display = 'none';
+        isHighScoreVisible = false;
+    } else {
+        displayHighScores();
+        highscoreContainer.style.display = 'block';
+        isHighScoreVisible = true;
+    }
+}
 
 function saveHighScore() {
     var initials = document.getElementById('initials').value;
