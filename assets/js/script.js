@@ -11,7 +11,7 @@ var endMessage = document.getElementById('end-message')
 var penaltyTime = 10;
 var currentQuestionIndex = 0;
 var highscoreButton = document.getElementById('highscore-button');
-var initialsSubmit = document.getElementById('initialsForm');
+var initialsEnter = document.getElementById('initialsForm');
 var gameOver = false;
 var highscoreButton = document.getElementById('highscore-button');
 
@@ -36,10 +36,11 @@ function saveHighScore() {
     displayHighScores();
 }
 
-  initialsSubmit.addEventListener('submit', function(event) {
+initialsEnter.addEventListener('submit', function(event) {
         saveHighScore();
         resetQuiz();
     });
+
 
 function resetQuiz() {
     // Reset variables
@@ -52,7 +53,7 @@ function resetQuiz() {
 
     // Hide end message and initials form
     endMessage.textContent = "";
-    initialsSubmit.style.display = "none";
+    initialsEnter.style.display = "none";
 
     // Show start button and hide highscore container (if it's visible)
     startBtn.style.display = "block";
@@ -146,18 +147,25 @@ function startGame() {
 
         if (time <= 0) {
             clearInterval(timer);
-
             //    ends the quiz if time runs out
 
             endQuiz();
         }
     }, 1000);
-    // hides the into container after start-game has initialized 
-
+    
+    // Here im chaging the timer text if the timer count reaches 30  
+    updateTimer = setInterval(function () {
+        if (time <= 30) {
+            timerCount.style.color = 'red';
+        } else {
+            timerCount.style.color = '';
+        }
+    });
     // shows our first question
-
+ 
     showQuestion();
 }
+
 
 function showQuestion() {
     // here we are creating and appending new elements to display the question text
@@ -226,7 +234,7 @@ function endQuiz() {
         if (time > 0) {
             endMessage.textContent = "Crongatulations, you won!";
             localStorage.setItem('win', 'true');
-            initialsSubmit.style.display = 'block';
+            initialsEnter.style.display = 'block';
         } else {
             endMessage.textContent = "Times Up! Game Over!";
         }
