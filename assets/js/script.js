@@ -36,6 +36,11 @@ function saveHighScore() {
     displayHighScores();
 }
 
+  initialsSubmit.addEventListener('submit', function(event) {
+        saveHighScore();
+        resetQuiz();
+    });
+
 function resetQuiz() {
     // Reset variables
     time = 100;
@@ -51,10 +56,6 @@ function resetQuiz() {
 
     // Show start button and hide highscore container (if it's visible)
     startBtn.style.display = "block";
-    highscoreContainer.style.display = "none";
-
-    // Clear any previous high score display
-    highscoreList.innerHTML = '';
 
     // Show intro container and hide question container
     introContainer.style.display = "block";
@@ -63,11 +64,6 @@ function resetQuiz() {
     // Clear any previous question and answer buttons
     questionContainer.innerHTML = '';
     answerButtonsContainer.innerHTML = '';
-
-    initialsSubmit.addEventListener('submit', function(event) {
-        saveHighScore();
-        resetQuiz();
-    })
 }
 
 function displayHighScores() {
