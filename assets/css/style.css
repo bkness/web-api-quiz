@@ -123,5 +123,6 @@ header p {
   @media (max-width: 768px) {
     .answer-button {
       flex: 0 0 100%; /* On smaller screens, buttons take up 100% of the container width */
+      width: 100px;
     }
 }
