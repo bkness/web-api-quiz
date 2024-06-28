@@ -46,7 +46,7 @@ Detailed comments within the code explain the functionality.
 
 ## Deployment
 
-You can access the deployed project [here](https://bkness.github.io/web-quiz-api/).
+You can access the deployed project [here](https://bkness.github.io/web-api-quiz/).
 
 
 ## Installation
